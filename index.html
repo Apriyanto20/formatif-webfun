@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>FORM LOGIN JAVASCRIPT</title>
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
+            rel="stylesheet" />
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+         <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen"> 
+  <div class="flex bg-white rounded-lg shadow-lg overflow-hidden max-w-4xl">
+    <!-- Login Form -->
+    <div class="w-1/2 p-8">
+        <div id="alert-sukses"
+            class="hidden p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
+                role="alert">
+            <span class="font-medium">Login</span> Berhasil
+        </div>
+        <div id="alert-gagal"
+            class="hidden p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                role="alert">
+            <span class="font-medium">Login</span> Gagal
+        </div>
+        <div id="errorAlert"
+        class="hidden p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                role="alert">
+        <span class="font-medium">Email</span> Tidak Boleh Kosong
+        </div>
+        <div id="errorAlert2"
+            class="hidden p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                role="alert">
+            <span class="font-medium">Password</span> Tidak Boleh Kosong
+        </div>
+      <div class="flex justify-center mb-4">
+        <img src="img/1. Kampus Global & Mandiri.png" alt="Logo1" class="h-12 mr-4">
+        <img src="img/logo-lp3i-warna.png" alt="Logo2" class="h-12">
+      </div>
+      
+      <form id="loginForm" >
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Email</label>
+          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="example@gmail.com">
+          <span id="errorEmail"></span>
+        </div>
+        <div class="mb-6">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Password</label>
+          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="********">
+          <span id="errorPassword"></span>
+        </div>
+        <div class="flex items-center justify-between">
+         <button type="submit"
+                class="text-dark bg-cyan-400 hover:bg-cyan-600 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-cyan-500 dark:hover:bg-cyan-500 dark:focus:ring-cyan-800">Submit</button>
+        </div>
+      </form>
+    </div>
+    <!-- Illustration -->
+    <div class="w-1/2 bg-white p-8 flex items-center justify-center">
+    <dotlottie-player src="https://lottie.host/fd0ded0b-b74c-4ec3-b8c8-cae8c37260a8/29SMalv2tO.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
+    </div>
+  </div>
+</body>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js">
+    </script>
+    <script>
+        $(document).ready(function(){
+            $("#loginForm").submit(function(event){
+                event.preventDefault();
+
+                var email = $("#email").val();
+                var password = $("#password").val();
+
+                var isValid = true;
+ 
+                if(email === ''){
+                    errorAlert();
+                    isValid = false;
+                } if(password === ''){
+                    errorAlert2();
+                    isValid = false;
+                } if(email !== "" && password !== "") {
+                    if(email === "adi@gmail.com" && password === "202004") {
+                    showAlert();
+                    window.location.href = 'captcha.html';
+                    }else {
+                    hideAlert();
+                    isValid = false;
+                    }
+                }
+            });
+        });
+
+        function showAlert(){
+            $('#alert-sukses').show()
+                setTimeout(() => {
+                    $('#alert-sukses').hide();
+                }, 3000);
+        }
+
+        function hideAlert(){
+            $('#alert-gagal').show()
+            setTimeout(() => {
+                 $('#alert-gagal').hide();
+            }, 3000);
+        }
+        function errorAlert(){
+            $('#errorAlert').show()
+            setTimeout(() => {
+                 $('#errorAlert').hide();
+            }, 3000);
+        }
+        function errorAlert2(){
+            $('#errorAlert2').show()
+            setTimeout(() => {
+                 $('#errorAlert2').hide();
+            }, 3000);
+        }
+    </script>
+</html>
